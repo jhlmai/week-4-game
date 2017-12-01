@@ -15,7 +15,7 @@
         <!-- instructions -->
         <h3>You will be given a random number at the start of the game.</h3>
         <h3>There are four crystals below. By clicking on a crystal you will add a specific amount of poits to your total score.</h3>
-        <h3>You win the game by matching yoiur total score to randomly generated number, you lose the game if yoiur total score
+        <h3>You win the game by matching your total score to randomly generated number, you lose the game if your total score
             goes above the random number.</h3>
         <h3>The value of each crystal is hidden from you until you click on it.</h3>
         <h3>Each time when the game starts, the game will change the values of each crystal.</h3>
@@ -28,13 +28,14 @@
         </h1>
     </div>
 
+
     <!-- wins and losses counter -->
     <div id="winsAndLossesCounter">
-        <p id="winsCounter">Wins:
-            <span id="winning"></span>
+        <p>Wins:
+            <span id="wins"></span>
         </p>
-        <p id="lossesCounter">losses:
-            <span id="losing"></span>
+        <p>Losses:
+            <span id="losses"></span>
         </p>
     </div>
 
@@ -68,8 +69,8 @@
 
             // create variables
             var generatedNum = 0;
-            var wins = 0;
-            var losses = 0;
+            var wins;
+            var losses;
             var lightBlueNum;
             var purpleNum;
             var redNum;
@@ -111,22 +112,22 @@
                 $("#currentScore").text(currentScore);
             });
 
+            newReset();
 
 
             if (currentScore === generatedNum) {
                 wins++;
-                $("#winning").text(wins);
+                $("#wins").text(wins);
                 newReset();
             }
             if (currentScore > generatedNum) {
                 losses++;
-                $("#losing").text(losses);
+                $("#losses").text(losses);
                 newReset();
             }
 
 
 
-            newReset();
         })
     </script>
 </body>
