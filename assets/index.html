@@ -57,70 +57,76 @@
 
 
     <script>
-        // $(document).ready(function() {
+        $(document).ready(function () {
 
 
-        // create variables
-        var generatedNum;
-        var wins = 0;
-        var losses = 0;
-        var lightBlueNum;
-        var purpleNum;
-        var redNum;
-        var sapphireNum;
-        var currentScore;
+            // create variables
+            var generatedNum;
+            var wins = 0;
+            var losses = 0;
+            var lightBlueNum;
+            var purpleNum;
+            var redNum;
+            var sapphireNum;
+            var currentScore;
 
 
-        // each time win or lose or start of game, reset to this:
-        function newReset() {
-            generatedNum = Math.floor(Math.random() * 102) + 19;
-            lightBlueNum = Math.floor(Math.random() * 12) + 1;
-            purpleNum = Math.floor(Math.random() * 12) + 1;
-            redNum = Math.floor(Math.random() * 12) + 1;
-            sappphireNum = Math.floor(Math.random() * 12) + 1;
-            currentScore = 0;
-        }
-
-
-
-        $("#targetNumber").text(generatedNum);
+            // each time win or lose or start of game, reset to this:
+            function newReset() {
+                $('#targetNumber').text(Math.floor(Math.random() * 102) + 19);
+                lightBlueNum = Math.floor(Math.random() * 12) + 1;
+                purpleNum = Math.floor(Math.random() * 12) + 1;
+                redNum = Math.floor(Math.random() * 12) + 1;
+                sappphireNum = Math.floor(Math.random() * 12) + 1;
+                currentScore = 0;
+            }
 
 
 
-        // on click event for each of the crystal buttons
-        $("#light-blue").on("click", function () {
-            currentScore += lightBlueNum;
-            console.log(currentScore);
 
-        });
+//   function newReset() {
+//     $('#targetNumber').text(Math.floor(Math.random() * 102) + 19);
+//   }
+  
 
-        $("#purple").on("click", function () {
-            currentScore += purpleNum;
-            console.log(currentScore);
-        });
 
-        $("#red").on("click", function () {
-            currentScore += redNum;
-            console.log(currentScore);
-        });
+            // on click event for each of the crystal buttons
+            $("#light-blue").on("click", function () {
+                currentScore += lightBlueNum;
+                console.log(currentScore);
 
-        $("#sapphire").on("click", function () {
-            currentScore += sapphireNum;
-            console.log(currentScore);
-        });
+            });
 
-if (currentScore == generatedNum) {
-    wins++;
-    newReset();
-}
-if (currentScore > generatedNum) {
-    losses++;
-    newReset(); 
-}
+            $("#purple").on("click", function () {
+                currentScore += purpleNum;
+                console.log(currentScore);
+            });
+
+            $("#red").on("click", function () {
+                currentScore += redNum;
+                console.log(currentScore);
+            });
+
+            $("#sapphire").on("click", function () {
+                currentScore += sapphireNum;
+                console.log(currentScore);
+            });
 
 
 
-        newReset()
+            if (currentScore == generatedNum) {
+                wins++;
+                newReset();
+            }
+            if (currentScore > generatedNum) {
+                losses++;
+                newReset();
+            }
+
+
+
+            newReset();
+        })
     </script>
 </body>
 
