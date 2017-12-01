@@ -69,8 +69,8 @@
 
             // create variables
             var generatedNum = 0;
-            var wins;
-            var losses;
+            var wins = 0;
+            var losses = 0;
             var lightBlueNum;
             var purpleNum;
             var redNum;
@@ -80,55 +80,66 @@
 
             // each time win or lose or start of game, reset to this:
             function newReset() {
-                generatedNum = $('#targetNumber').text(Math.floor(Math.random() * 102) + 19);
+                generatedNum = Math.floor(Math.random() * 102) + 19;
                 lightBlueNum = Math.floor(Math.random() * 12) + 1;
                 purpleNum = Math.floor(Math.random() * 12) + 1;
                 redNum = Math.floor(Math.random() * 12) + 1;
                 sapphireNum = Math.floor(Math.random() * 12) + 1;
                 currentScore = 0;
+                
+                $('#targetNumber').text(generatedNum);
+
             }
 
 
+            newReset();
 
 
             // on click event for each of the crystal buttons
             $("#light-blue").on("click", function () {
                 currentScore += lightBlueNum;
                 $("#currentScore").text(currentScore);
+
+                // console.log(currentScore);
+            }),
+
+                $("#purple").on("click", function () {
+                    currentScore += purpleNum;
+                    $("#currentScore").text(currentScore);
+                }),
+
+                $("#red").on("click", function () {
+                    currentScore += redNum;
+                    $("#currentScore").text(currentScore);
+                }),
+
+                $("#sapphire").on("click", function () {
+                    currentScore += sapphireNum;
+                    $("#currentScore").text(currentScore);
+                })
+
+
+            $("#crystalImages").on("click", function () {
+                if (currentScore === generatedNum) {
+                    wins++;
+                    alert("you win");
+                    $("#wins").text(wins);
+                    newReset();
+                    $("#targetNumber").text(Math.floor(Math.random() * 102) + 19);
+                    $("#currentScore").text(currentScore);
+                }
+                if (currentScore > generatedNum) {
+                    alert("you lose");
+                    losses++;
+                    $("#losses").text(losses);
+                    newReset();
+                    $("#targetNumber").text(Math.floor(Math.random() * 102) + 19);
+                    $("#currentScore").text(currentScore);
+                }
+                console.log(currentScore);
+
             });
-
-            $("#purple").on("click", function () {
-                currentScore += purpleNum;
-                $("#currentScore").text(currentScore);
-            });
-
-            $("#red").on("click", function () {
-                currentScore += redNum;
-                $("#currentScore").text(currentScore);
-            });
-
-            $("#sapphire").on("click", function () {
-                currentScore += sapphireNum;
-                $("#currentScore").text(currentScore);
-            });
-
-            newReset();
-
-
-            if (currentScore === generatedNum) {
-                wins++;
-                $("#wins").text(wins);
-                newReset();
-            }
-            if (currentScore > generatedNum) {
-                losses++;
-                $("#losses").text(losses);
-                newReset();
-            }
-
-
-
-        })
+        });
     </script>
 </body>
 
