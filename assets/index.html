@@ -30,8 +30,12 @@
 
     <!-- wins and losses counter -->
     <div id="winsAndLossesCounter">
-        <p id="winsCounter">Wins: </p>
-        <p id="lossesCounter">losses: </p>
+        <p id="winsCounter">Wins:
+            <span id="winning"></span>
+        </p>
+        <p id="lossesCounter">losses:
+            <span id="losing"></span>
+        </p>
     </div>
 
     <!-- images as buttons -->
@@ -51,7 +55,9 @@
     </div>
 
     <div id="scoreTotal">
-        <h1>Current Score: </h1>
+        <h1>Current Score:
+            <span id="currentScore"></span>
+        </h1>
     </div>
 
 
@@ -61,7 +67,7 @@
 
 
             // create variables
-            var generatedNum;
+            var generatedNum = 0;
             var wins = 0;
             var losses = 0;
             var lightBlueNum;
@@ -73,53 +79,48 @@
 
             // each time win or lose or start of game, reset to this:
             function newReset() {
-                $('#targetNumber').text(Math.floor(Math.random() * 102) + 19);
+                generatedNum = $('#targetNumber').text(Math.floor(Math.random() * 102) + 19);
                 lightBlueNum = Math.floor(Math.random() * 12) + 1;
                 purpleNum = Math.floor(Math.random() * 12) + 1;
                 redNum = Math.floor(Math.random() * 12) + 1;
-                sappphireNum = Math.floor(Math.random() * 12) + 1;
+                sapphireNum = Math.floor(Math.random() * 12) + 1;
                 currentScore = 0;
             }
 
 
 
 
-//   function newReset() {
-//     $('#targetNumber').text(Math.floor(Math.random() * 102) + 19);
-//   }
-  
-
-
             // on click event for each of the crystal buttons
             $("#light-blue").on("click", function () {
                 currentScore += lightBlueNum;
-                console.log(currentScore);
-
+                $("#currentScore").text(currentScore);
             });
 
             $("#purple").on("click", function () {
                 currentScore += purpleNum;
-                console.log(currentScore);
+                $("#currentScore").text(currentScore);
             });
 
             $("#red").on("click", function () {
                 currentScore += redNum;
-                console.log(currentScore);
+                $("#currentScore").text(currentScore);
             });
 
             $("#sapphire").on("click", function () {
                 currentScore += sapphireNum;
-                console.log(currentScore);
+                $("#currentScore").text(currentScore);
             });
 
 
 
-            if (currentScore == generatedNum) {
+            if (currentScore === generatedNum) {
                 wins++;
+                $("#winning").text(wins);
                 newReset();
             }
             if (currentScore > generatedNum) {
                 losses++;
+                $("#losing").text(losses);
                 newReset();
             }
 
