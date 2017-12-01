@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,37 +8,106 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Crystal Game</title>
 </head>
+
 <body>
     <h1>Crystals Collector!</h1>
-    <p>You will be given a random number at the start of the game.</p>
-    <p>There are four crystals below. By clicking on a crystal you will add a specific amount of poits to your total score.</p>
-    <p>You win the game by matching yoiur total score to randomly generated number, you lose the game if yoiur total score goes above the random number.</p>
-    <p>The value of each crystal is hidden from you until you click on it.</p>
-    <p>Each time when the game starts, the game will change the values of each crystal.</p>
+    <div id="instructions">
+        <p>You will be given a random number at the start of the game.</p>
+        <p>There are four crystals below. By clicking on a crystal you will add a specific amount of poits to your total score.</p>
+        <p>You win the game by matching yoiur total score to randomly generated number, you lose the game if yoiur total score
+            goes above the random number.</p>
+        <p>The value of each crystal is hidden from you until you click on it.</p>
+        <p>Each time when the game starts, the game will change the values of each crystal.</p>
+    </div>
+
+    <h1>Target: <span id="number-to-guess"></span></h1>
+    </div>
+
+    <button>
+        <img src="images/Light-blue-icon.png" id="Light-blue" style="width:100px;height:100px">
+    </button>
+    <button>
+        <img src="images/Purple-crystal-icon.png" id="Purple" style="width:100px;height:100px">
+    </button>
+    <button>
+        <img src="images/Red-icon.png" id="Red" style="width:100px;height:100px">
+    </button>
+    <button>
+        <img src="images/Sapphire-icon.png" id="Sapphire" style="width:100px;height:100px">
+    </button>
+
+    <h1></h1>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+        });
+
+        // Create block that displays a random number between 19 and 120
+        var targetNumber = Math.floor(Math.random() * 102) + 19;
+
+        $("#number-to-guess").text(targetNumber);
 
 
-    <!-- Create block that displays a random number between 19 and 120 -->
 
 
-    <!-- show crystals next to each other on the page with some padding -->
-
-    <!-- Give random number between 1 and 12 assigned to each crystal -->
-
-    <!-- Create block that shows wins and losses -->
+        var score = 0;
 
 
+        // Give random number between 1 and 12 assigned to each crystal
+        function lightBlue() {
+            return Math.floor(Math.random() * 12) + 1;
+        }
+        function purple() {
+            return Math.floor(Math.random() * 12) + 1;
+        }
+        function red() {
+            return Math.floor(Math.random() * 12) + 1;
+        }
+        function sapphire() {
+            return Math.floor(Math.random() * 12) + 1;
+        }
 
-    <!-- write out "Your current score is:" -->
 
-    <!-- Show a block that calculates the current sum of the numbers clicked below the target number -->
+        $("#Light-blue").on("click", function () {
+            score += lightBlue()
+            console.log(score)
+
+        });
+
+        $("#Purple").on("click", function () {
+            score += purple()
+            console.log(score)
+        });
+
+        $("#Red").on("click", function () {
+            score += red()
+            console.log(score)
+        });
+
+        $("#Sapphire").on("click", function () {
+            score += sapphire()
+            console.log(score)
+        });
+    // show crystals next to each other on the page with some padding
+
+    // Create block that shows wins and losses
 
 
 
-    <!-- CSS each section of the page -->
+    // write out "Your current score is:"
 
 
+    // Show a block that calculates the current sum of the numbers clicked below the target number
+
+
+
+    // CSS each section of the page
+
+
+
+
+    </script>
 </body>
+
 </html>
-
-
-<!-- return Math.floor(Math.random) * (120 - 19 + 1) + 19 -->
